@@ -86,7 +86,7 @@ class _MyAppState extends State<MyApp> {
                               MaterialPageRoute route = MaterialPageRoute(
                                   builder: (_) => MovieDetail(
                                         movie: posts as PostsModel,
-                                        index: posts!.results[position] as int,
+                                        index: position,
                                       ));
                               Navigator.push(context, route);
                             },
