@@ -21,14 +21,17 @@ class MovieDetail extends StatelessWidget {
     double height = MediaQuery.of(context).size.height;
 
     return Scaffold(
-        appBar: AppBar(
-          title: Text(movie.results[index].title),
-        ),
-        body: SingleChildScrollView(
-            child: Center(
-                child: Column(
+      appBar: AppBar(
+        title: Text(movie.results[index].title),
+      ),
+      body: SingleChildScrollView(
+        child: Column(
           children: <Widget>[
-            Container(padding: EdgeInsets.all(16), height: height / 1.5, child: Image.network(path)),
+            Center(
+              child: Column(children: [
+                Container(padding: EdgeInsets.all(16), height: height / 1.5, child: Image.network(path)),
+              ]),
+            ),
             Container(
               padding: EdgeInsets.only(left: 16, right: 16),
               child: Text(movie.results[index].overview, textAlign: TextAlign.justify, style: TextStyle(fontSize: 16)),
@@ -39,8 +42,10 @@ class MovieDetail extends StatelessWidget {
                 "Release Date: " + newFormatt.format(movie.results[index].releaseDate),
                 textAlign: TextAlign.left,
               ),
-            )
+            ),
           ],
-        ))));
+        ),
+      ),
+    );
   }
 }
