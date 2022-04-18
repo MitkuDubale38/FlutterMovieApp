@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'models/newsinfo.dart';
+import 'package:intl/intl_browser.dart';
 
 class MovieDetail extends StatelessWidget {
   final PostsModel movie;
@@ -18,6 +19,8 @@ class MovieDetail extends StatelessWidget {
       path = "https://images.freeimages.com/images/large-previews/5eb/movie-clapboard-1184339.jpg";
     }
     double height = MediaQuery.of(context).size.height;
+    var newFormat = DateFormat("yy-MM-dd");
+    
     return Scaffold(
         appBar: AppBar(
           title: Text(movie.results[index].title),
@@ -33,7 +36,7 @@ class MovieDetail extends StatelessWidget {
             ),
             Container(
               padding: EdgeInsets.symmetric(horizontal: 16, vertical: 15),
-              child: Text("Release Date: " + movie.results[index].releaseDate.toString()),
+              child: Text("Release Date: " + newFormat.format(movie.results[index].releaseDate),
             )
           ],
         ))));
