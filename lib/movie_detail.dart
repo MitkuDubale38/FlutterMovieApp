@@ -29,6 +29,10 @@ class MovieDetail extends StatelessWidget {
             Container(
               padding: EdgeInsets.only(left: 16, right: 16),
               child: Text(movie.results[index].overview),
+            ),
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: 16, vertical: 15),
+              child: Text("Release Date: " + movie.results[index].releaseDate.toString()),
             )
           ],
         ))));
