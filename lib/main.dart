@@ -30,7 +30,7 @@ class _MyAppState extends State<MyApp> {
   }
 
   void getData() async {
-    posts = await ApiManager().getMovies();
+    posts = await ApiManager().getMovies(page);
     if (posts != null) {
       setState(() {
         isLoaded = true;
@@ -84,6 +84,7 @@ class _MyAppState extends State<MyApp> {
                   onPressed: () {
                     setState(() {
                       page = page + 1;
+                      getData();
                     });
                   },
                   child: Text('More Movies'),
