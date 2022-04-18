@@ -20,7 +20,7 @@ class MovieDetail extends StatelessWidget {
     }
     double height = MediaQuery.of(context).size.height;
     var newFormat = DateFormat("yy-MM-dd");
-    
+
     return Scaffold(
         appBar: AppBar(
           title: Text(movie.results[index].title),
@@ -36,7 +36,7 @@ class MovieDetail extends StatelessWidget {
             ),
             Container(
               padding: EdgeInsets.symmetric(horizontal: 16, vertical: 15),
-              child: Text("Release Date: " + newFormat.format(movie.results[index].releaseDate),
+              child: Text("Release Date: " + newFormat.format(movie.results[index].releaseDate)),
             )
           ],
         ))));
