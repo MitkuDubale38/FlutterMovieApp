@@ -8,6 +8,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'cubit/countercubit.dart';
 import 'models/newsinfo.dart';
 import 'services/api_manager.dart';
+import 'movie_detail.dart';
 
 void main() => runApp(MyApp());
 
@@ -81,6 +82,14 @@ class _MyAppState extends State<MyApp> {
                           color: Colors.white,
                           elevation: 2.0,
                           child: ListTile(
+                            onTap: () {
+                              MaterialPageRoute route = MaterialPageRoute(
+                                  builder: (_) => MovieDetail(
+                                        movie: posts as PostsModel,
+                                        index: posts!.results[position] as int,
+                                      ));
+                              Navigator.push(context, route);
+                            },
                             leading: CircleAvatar(
                               backgroundImage: image,
                             ),
