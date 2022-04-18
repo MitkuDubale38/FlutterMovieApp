@@ -76,7 +76,7 @@ class _MyAppState extends State<MyApp> {
                             postions.removeAt(position);
                           });
 
-                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('${posts!.results[position].title} dismissed')));
+                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('$postions dismissed')));
                         },
                         child: Card(
                           color: Colors.white,
@@ -87,6 +87,15 @@ class _MyAppState extends State<MyApp> {
                             ),
                             title: Text(posts!.results[position].title),
                             subtitle: Text('Released: ' + posts!.results[position].title + ' - Vote: ' + posts!.results[position].voteAverage.toString()),
+                          ),
+                        ),
+                        background: Container(
+                          color: Colors.red,
+                          margin: const EdgeInsets.symmetric(horizontal: 15),
+                          alignment: Alignment.centerRight,
+                          child: const Icon(
+                            Icons.delete,
+                            color: Colors.white,
                           ),
                         ),
                       );
