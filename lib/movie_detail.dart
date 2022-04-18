@@ -19,7 +19,7 @@ class MovieDetail extends StatelessWidget {
       path = "https://images.freeimages.com/images/large-previews/5eb/movie-clapboard-1184339.jpg";
     }
     double height = MediaQuery.of(context).size.height;
-    var newFormat = DateFormat("yy-MM-dd");
+    var newFormatt = DateFormat("yy-MM-dd");
 
     return Scaffold(
         appBar: AppBar(
@@ -36,7 +36,7 @@ class MovieDetail extends StatelessWidget {
             ),
             Container(
               padding: EdgeInsets.symmetric(horizontal: 16, vertical: 15),
-              child: Text("Release Date: " + newFormat.format(movie.results[index].releaseDate)),
+              child: Text("Release Date: " + newFormatt.format(movie.results[index].releaseDate)),
             )
           ],
         ))));
