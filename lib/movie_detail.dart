@@ -37,6 +37,7 @@ class MovieDetail extends StatelessWidget {
               child: Text(movie.results[index].overview, textAlign: TextAlign.justify, style: TextStyle(fontSize: 16)),
             ),
             Container(
+              width: MediaQuery.of(context).size.width,
               padding: EdgeInsets.symmetric(horizontal: 16, vertical: 15),
               child: Text(
                 "Release Date: " + newFormatt.format(movie.results[index].releaseDate),
