@@ -72,11 +72,10 @@ class _MyAppState extends State<MyApp> {
                       return Dismissible(
                         key: UniqueKey(),
                         onDismissed: (direction) {
+                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('${posts!.results[position].title} dismissed')));
                           setState(() {
                             postions.removeAt(position);
                           });
-
-                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('${posts!.results[position].title} dismissed')));
                         },
                         child: Card(
                           color: Colors.white,
@@ -90,7 +89,7 @@ class _MyAppState extends State<MyApp> {
                           ),
                         ),
                         background: Container(
-                          color: Colors.red[200],
+                          color: Colors.red[400],
                           margin: const EdgeInsets.symmetric(horizontal: 15),
                           alignment: Alignment.centerRight,
                           child: const Icon(
