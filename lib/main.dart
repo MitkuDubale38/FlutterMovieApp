@@ -55,35 +55,33 @@ class _MyAppState extends State<MyApp> {
         ),
         body: Visibility(
           visible: isLoaded,
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                ListView.builder(
-                    itemCount: posts?.results.length,
-                    itemBuilder: (BuildContext context, int position) {
-                      if (posts!.results[position].posterPath != null) {
-                        image = NetworkImage(iconBase + posts!.results[position].posterPath);
-                      } else {
-                        image = NetworkImage(defaultImage);
-                      }
-                      return Card(
-                        color: Colors.white,
-                        elevation: 2.0,
-                        child: ListTile(
-                          leading: CircleAvatar(
-                            backgroundImage: image,
-                          ),
-                          title: Text(posts!.results[position].title),
-                          subtitle: Text('Released: ' + posts!.results[position].title + ' - Vote: ' + posts!.results[position].voteAverage.toString()),
+          child: Column(
+            children: [
+              ListView.builder(
+                  itemCount: posts?.results.length,
+                  itemBuilder: (BuildContext context, int position) {
+                    if (posts!.results[position].posterPath != null) {
+                      image = NetworkImage(iconBase + posts!.results[position].posterPath);
+                    } else {
+                      image = NetworkImage(defaultImage);
+                    }
+                    return Card(
+                      color: Colors.white,
+                      elevation: 2.0,
+                      child: ListTile(
+                        leading: CircleAvatar(
+                          backgroundImage: image,
                         ),
-                      );
-                    }),
-                ElevatedButton(
-                  onPressed: () {},
-                  child: Text('Next Page'),
-                )
-              ],
-            ),
+                        title: Text(posts!.results[position].title),
+                        subtitle: Text('Released: ' + posts!.results[position].title + ' - Vote: ' + posts!.results[position].voteAverage.toString()),
+                      ),
+                    );
+                  }),
+              ElevatedButton(
+                onPressed: () {},
+                child: Text('Next Page'),
+              )
+            ],
           ),
           replacement: const Center(child: CircularProgressIndicator()),
         ),
