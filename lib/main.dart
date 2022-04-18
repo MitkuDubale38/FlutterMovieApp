@@ -90,7 +90,7 @@ class _MyAppState extends State<MyApp> {
                         ),
                         background: Container(
                           color: Colors.red[400],
-                          margin: const EdgeInsets.symmetric(horizontal: 10),
+                          margin: const EdgeInsets.symmetric(horizontal: 5),
                           alignment: Alignment.centerRight,
                           child: const Icon(
                             Icons.delete,
