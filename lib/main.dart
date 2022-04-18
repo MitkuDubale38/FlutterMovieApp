@@ -72,7 +72,7 @@ class _MyAppState extends State<MyApp> {
                       return Dismissible(
                         key: UniqueKey(),
                         onDismissed: (direction) {
-                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('${posts!.results[position].title} dismissed')));
+                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(backgroundColor: Colors.blue, content: Text('${posts!.results[position].title} Dismissed')));
                           setState(() {
                             postions.removeAt(position);
                           });
