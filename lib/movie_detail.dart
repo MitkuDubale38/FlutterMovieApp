@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'models/newsinfo.dart';
-import 'package:intl/intl_browser.dart';
+import 'package:intl/intl.dart';
 
 class MovieDetail extends StatelessWidget {
   final PostsModel movie;
