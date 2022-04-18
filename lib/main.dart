@@ -68,15 +68,26 @@ class _MyAppState extends State<MyApp> {
                       } else {
                         image = NetworkImage(defaultImage);
                       }
-                      return Card(
-                        color: Colors.white,
-                        elevation: 2.0,
-                        child: ListTile(
-                          leading: CircleAvatar(
-                            backgroundImage: image,
+                      final postions = posts!.results;
+                      return Dismissible(
+                        key: UniqueKey(),
+                        onDismissed: (direction) {
+                          setState(() {
+                            postions.removeAt(position);
+                          });
+
+                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('$postions dismissed')));
+                        },
+                        child: Card(
+                          color: Colors.white,
+                          elevation: 2.0,
+                          child: ListTile(
+                            leading: CircleAvatar(
+                              backgroundImage: image,
+                            ),
+                            title: Text(posts!.results[position].title),
+                            subtitle: Text('Released: ' + posts!.results[position].title + ' - Vote: ' + posts!.results[position].voteAverage.toString()),
                           ),
-                          title: Text(posts!.results[position].title),
-                          subtitle: Text('Released: ' + posts!.results[position].title + ' - Vote: ' + posts!.results[position].voteAverage.toString()),
                         ),
                       );
                     }),
