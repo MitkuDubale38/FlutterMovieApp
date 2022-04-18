@@ -88,7 +88,13 @@ class _MyAppState extends State<MyApp> {
                     });
                   },
                   child: Text('More Movies'),
-                )
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.blue,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(50),
+                    ),
+                  ),
+                ),
               ],
             ),
           ),
