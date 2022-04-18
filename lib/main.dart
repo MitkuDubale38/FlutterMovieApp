@@ -80,6 +80,11 @@ class _MyAppState extends State<MyApp> {
                         ),
                       );
                     }),
+                ElevatedButton(
+                  style: raisedButtonStyle,
+                  onPressed: () {},
+                  child: Text('Next'),
+                )
               ],
             ),
           ),
