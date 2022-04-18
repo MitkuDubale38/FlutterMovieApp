@@ -113,7 +113,7 @@ class _MyAppState extends State<MyApp> {
                   child: ElevatedButton(
                     onPressed: () {
                       setState(() {
-                        if (page != posts.total_pages) {
+                        if (page != posts?.total_pages) {
                           page = page + 1;
                           getData();
                         }
