@@ -1,6 +1,7 @@
 import 'dart:html';
 
 import 'package:bloctutorial/cubit/countercubit.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -55,30 +56,32 @@ class _MyAppState extends State<MyApp> {
         ),
         body: Visibility(
           visible: isLoaded,
-          child: Column(
-            children: [
-              ListView.builder(
-                  shrinkWrap: true,
-                  itemCount: posts?.results.length,
-                  itemBuilder: (BuildContext context, int position) {
-                    if (posts!.results[position].posterPath != null) {
-                      image = NetworkImage(iconBase + posts!.results[position].posterPath);
-                    } else {
-                      image = NetworkImage(defaultImage);
-                    }
-                    return Card(
-                      color: Colors.white,
-                      elevation: 2.0,
-                      child: ListTile(
-                        leading: CircleAvatar(
-                          backgroundImage: image,
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: posts?.results.length,
+                    itemBuilder: (BuildContext context, int position) {
+                      if (posts!.results[position].posterPath != null) {
+                        image = NetworkImage(iconBase + posts!.results[position].posterPath);
+                      } else {
+                        image = NetworkImage(defaultImage);
+                      }
+                      return Card(
+                        color: Colors.white,
+                        elevation: 2.0,
+                        child: ListTile(
+                          leading: CircleAvatar(
+                            backgroundImage: image,
+                          ),
+                          title: Text(posts!.results[position].title),
+                          subtitle: Text('Released: ' + posts!.results[position].title + ' - Vote: ' + posts!.results[position].voteAverage.toString()),
                         ),
-                        title: Text(posts!.results[position].title),
-                        subtitle: Text('Released: ' + posts!.results[position].title + ' - Vote: ' + posts!.results[position].voteAverage.toString()),
-                      ),
-                    );
-                  }),
-            ],
+                      );
+                    }),
+              ],
+            ),
           ),
           replacement: const Center(child: CircularProgressIndicator()),
         ),
