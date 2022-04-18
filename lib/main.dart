@@ -58,6 +58,7 @@ class _MyAppState extends State<MyApp> {
           child: Column(
             children: [
               ListView.builder(
+                  shrinkWrap: true,
                   itemCount: posts?.results.length,
                   itemBuilder: (BuildContext context, int position) {
                     if (posts!.results[position].posterPath != null) {
