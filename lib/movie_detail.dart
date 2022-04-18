@@ -6,7 +6,7 @@ import 'package:intl/intl.dart';
 class MovieDetail extends StatelessWidget {
   final PostsModel movie;
   final int index;
-  var newFormatt = DateFormat("yy-MM-dd");
+  var newFormatt = DateFormat("dd-MM-yy");
   final String imgPath = 'https://image.tmdb.org/t/p/w500/';
   MovieDetail({required this.movie, required this.index});
 
