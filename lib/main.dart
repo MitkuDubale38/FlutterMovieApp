@@ -19,7 +19,7 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   PostsModel? posts;
   bool isLoaded = false;
-  int? page;
+  int page = 1;
   final String iconBase = 'https://image.tmdb.org/t/p/w92/';
   final String defaultImage = 'https://images.freeimages.com/images/large-previews/5eb/movie-clapboard-1184339.jpg';
 
@@ -37,7 +37,7 @@ class _MyAppState extends State<MyApp> {
         page = page;
       });
     }
-    print(posts?.results[0].title);
+    print(posts?.page = 2);
   }
 
   @override
@@ -81,8 +81,12 @@ class _MyAppState extends State<MyApp> {
                       );
                     }),
                 ElevatedButton(
-                  onPressed: () {},
-                  child: Text('Next'),
+                  onPressed: () {
+                    setState(() {
+                      page = page + 1;
+                    });
+                  },
+                  child: Text('More Movies'),
                 )
               ],
             ),
