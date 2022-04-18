@@ -1,5 +1,6 @@
 import 'package:bloctutorial/cubit/countercubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'cubit/countercubit.dart';
 import 'models/newsinfo.dart';
@@ -39,13 +40,14 @@ class _MyAppState extends State<MyApp> {
     NetworkImage image;
     return MaterialApp(
       // Application name
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Stateful Clicker Counter',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
       home: Scaffold(
         appBar: AppBar(
-          title: Text("Flutter API"),
+          title: Text("Upcoming Movies"),
         ),
         body: Visibility(
           visible: isLoaded,
