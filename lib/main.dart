@@ -89,6 +89,8 @@ class _MyAppState extends State<MyApp> {
                   },
                   child: Text('More Movies'),
                   style: ElevatedButton.styleFrom(
+                    elevation: 5,
+                    padding: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                     primary: Colors.blue,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(50),
