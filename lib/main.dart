@@ -77,10 +77,6 @@ class _MyAppState extends State<MyApp> {
                       ),
                     );
                   }),
-              ElevatedButton(
-                onPressed: () {},
-                child: Text('Next Page'),
-              )
             ],
           ),
           replacement: const Center(child: CircularProgressIndicator()),
