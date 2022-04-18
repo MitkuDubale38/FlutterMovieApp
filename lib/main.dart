@@ -15,6 +15,8 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   PostsModel? posts;
   bool isLoaded = false;
+  final String iconBase = 'https://image.tmdb.org/t/p/w92/';
+  final String defaultImage = 'https://images.freeimages.com/images/large-previews/5eb/movie-clapboard-1184339.jpg';
 
   @override
   void initState() {
@@ -34,6 +36,7 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
+    NetworkImage image;
     return MaterialApp(
       // Application name
       title: 'Flutter Stateful Clicker Counter',
@@ -49,10 +52,18 @@ class _MyAppState extends State<MyApp> {
           child: ListView.builder(
               itemCount: posts?.results.length,
               itemBuilder: (BuildContext context, int position) {
+                if (posts!.results[position].posterPath != null) {
+                  image = NetworkImage(iconBase + posts!.results[position].posterPath);
+                } else {
+                  image = NetworkImage(defaultImage);
+                }
                 return Card(
                   color: Colors.white,
                   elevation: 2.0,
                   child: ListTile(
+                    leading: CircleAvatar(
+                      backgroundImage: image,
+                    ),
                     title: Text(posts!.results[position].title),
                     subtitle: Text('Released: ' + posts!.results[position].title + ' - Vote: ' + posts!.results[position].voteAverage.toString()),
                   ),
