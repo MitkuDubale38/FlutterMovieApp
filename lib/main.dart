@@ -80,20 +80,23 @@ class _MyAppState extends State<MyApp> {
                         ),
                       );
                     }),
-                ElevatedButton(
-                  onPressed: () {
-                    setState(() {
-                      page = page + 1;
-                      getData();
-                    });
-                  },
-                  child: Text('More Movies'),
-                  style: ElevatedButton.styleFrom(
-                    elevation: 5,
-                    padding: EdgeInsets.symmetric(horizontal: 100, vertical: 20),
-                    primary: Colors.blue,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(50),
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: 20),
+                  child: ElevatedButton(
+                    onPressed: () {
+                      setState(() {
+                        page = page + 1;
+                        getData();
+                      });
+                    },
+                    child: Text('More Movies'),
+                    style: ElevatedButton.styleFrom(
+                      elevation: 5,
+                      padding: EdgeInsets.symmetric(horizontal: 100, vertical: 20),
+                      primary: Colors.blue,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(50),
+                      ),
                     ),
                   ),
                 ),
