@@ -29,7 +29,7 @@ class MovieDetail extends StatelessWidget {
             Container(padding: EdgeInsets.all(16), height: height / 1.5, child: Image.network(path)),
             Container(
               padding: EdgeInsets.only(left: 16, right: 16),
-              child: Text(movie.results[index].overview, style: TextStyle(fontSize: 16)),
+              child: Text(movie.results[index].overview, textAlign: TextAlign.justify, style: TextStyle(fontSize: 16)),
             ),
             Container(
               padding: EdgeInsets.symmetric(horizontal: 16, vertical: 15),
