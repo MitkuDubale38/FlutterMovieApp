@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:bloctutorial/cubit/countercubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -16,6 +18,7 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   PostsModel? posts;
   bool isLoaded = false;
+  int? page;
   final String iconBase = 'https://image.tmdb.org/t/p/w92/';
   final String defaultImage = 'https://images.freeimages.com/images/large-previews/5eb/movie-clapboard-1184339.jpg';
 
@@ -30,6 +33,7 @@ class _MyAppState extends State<MyApp> {
     if (posts != null) {
       setState(() {
         isLoaded = true;
+        page = page;
       });
     }
     print(posts?.results[0].title);
@@ -51,26 +55,34 @@ class _MyAppState extends State<MyApp> {
         ),
         body: Visibility(
           visible: isLoaded,
-          child: ListView.builder(
-              itemCount: posts?.results.length,
-              itemBuilder: (BuildContext context, int position) {
-                if (posts!.results[position].posterPath != null) {
-                  image = NetworkImage(iconBase + posts!.results[position].posterPath);
-                } else {
-                  image = NetworkImage(defaultImage);
-                }
-                return Card(
-                  color: Colors.white,
-                  elevation: 2.0,
-                  child: ListTile(
-                    leading: CircleAvatar(
-                      backgroundImage: image,
-                    ),
-                    title: Text(posts!.results[position].title),
-                    subtitle: Text('Released: ' + posts!.results[position].title + ' - Vote: ' + posts!.results[position].voteAverage.toString()),
-                  ),
-                );
-              }),
+          child: Column(
+            children: [
+              ListView.builder(
+                  itemCount: posts?.results.length,
+                  itemBuilder: (BuildContext context, int position) {
+                    if (posts!.results[position].posterPath != null) {
+                      image = NetworkImage(iconBase + posts!.results[position].posterPath);
+                    } else {
+                      image = NetworkImage(defaultImage);
+                    }
+                    return Card(
+                      color: Colors.white,
+                      elevation: 2.0,
+                      child: ListTile(
+                        leading: CircleAvatar(
+                          backgroundImage: image,
+                        ),
+                        title: Text(posts!.results[position].title),
+                        subtitle: Text('Released: ' + posts!.results[position].title + ' - Vote: ' + posts!.results[position].voteAverage.toString()),
+                      ),
+                    );
+                  }),
+              ElevatedButton(
+                onPressed: () {},
+                child: Text('Next Page'),
+              )
+            ],
+          ),
           replacement: const Center(child: CircularProgressIndicator()),
         ),
       ),
