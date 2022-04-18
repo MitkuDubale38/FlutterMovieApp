@@ -33,6 +33,7 @@ class MovieDetail extends StatelessWidget {
               ]),
             ),
             Container(
+              width: MediaQuery.of(context).size.width,
               padding: EdgeInsets.only(left: 16, right: 16),
               child: Text(movie.results[index].overview, textAlign: TextAlign.justify, style: TextStyle(fontSize: 16)),
             ),
