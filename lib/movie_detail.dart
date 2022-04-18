@@ -6,7 +6,7 @@ import 'package:intl/intl_browser.dart';
 class MovieDetail extends StatelessWidget {
   final PostsModel movie;
   final int index;
-
+  var newFormatt = DateFormat("yy-MM-dd");
   final String imgPath = 'https://image.tmdb.org/t/p/w500/';
   MovieDetail({required this.movie, required this.index});
 
@@ -19,7 +19,6 @@ class MovieDetail extends StatelessWidget {
       path = "https://images.freeimages.com/images/large-previews/5eb/movie-clapboard-1184339.jpg";
     }
     double height = MediaQuery.of(context).size.height;
-    var newFormatt = DateFormat("yy-MM-dd");
 
     return Scaffold(
         appBar: AppBar(
