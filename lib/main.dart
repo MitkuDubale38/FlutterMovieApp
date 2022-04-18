@@ -76,7 +76,7 @@ class _MyAppState extends State<MyApp> {
                             postions.removeAt(position);
                           });
 
-                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('${posts!.results[position + 1].title} dismissed')));
+                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('${posts!.results[position - 1].title} dismissed')));
                         },
                         child: Card(
                           color: Colors.white,
