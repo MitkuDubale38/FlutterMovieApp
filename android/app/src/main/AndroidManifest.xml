@@ -2,7 +2,8 @@
     package="io.flutlab.click_counter.click_counter">
 
    <uses-permission android:name="android.permission.INTERNET" />
-
+   <uses-permission android:name="android.permission.CAMERA" />
+   
    <application
         android:label="bloctutorial"
         android:name="${applicationName}"
