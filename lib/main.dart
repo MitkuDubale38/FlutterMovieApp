@@ -99,7 +99,7 @@ class _MyAppState extends State<MyApp> {
                                 backgroundImage: image,
                               ),
                               title: Text(posts!.results[position].title),
-                              subtitle: Text('Released: ' + posts!.results[position].title + ' - Vote: ' + posts!.results[position].voteAverage.toString()),
+                              subtitle: Text('Released: ' + posts!.results[position].title + ' - ' + posts!.results[position].voteAverage.toString() + ' ⭐'),
                             ),
                           ),
                           background: Container(

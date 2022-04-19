@@ -38,7 +38,7 @@ class MovieDetail extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text("Overview", textAlign: TextAlign.left, style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-                  Text(movie.results[index].voteAverage.toString() + " ⭐", textAlign: TextAlign.left, style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                  Text(movie.results[index].voteAverage.toString() + "⭐", textAlign: TextAlign.left, style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
                 ],
               ),
             ),
