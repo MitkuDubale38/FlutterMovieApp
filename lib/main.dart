@@ -7,6 +7,7 @@ import 'cubit/countercubit.dart';
 import 'models/newsinfo.dart';
 import 'services/api_manager.dart';
 import 'movie_detail.dart';
+import 'dart:async';
 
 void main() => runApp(MyApp());
 
