@@ -40,7 +40,7 @@ class _MyAppState extends State<MyApp> {
       color: Colors.white,
       child:FlutterLogo(size:MediaQuery.of(context).size.height)
     ),
-    );
+    )
     );
   }
 }
