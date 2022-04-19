@@ -17,6 +17,13 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
 
+  void initState() {
+    super.initState();
+    Timer(Duration(seconds: 3),
+    ()=>Navigator.pushReplacement(context,MaterialPageRoute(builder:(context) => HomePage()))
+         );
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +35,10 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: HomePage(),
+      home:Container(
+      color: Colors.white,
+      child:FlutterLogo(size:MediaQuery.of(context).size.height)
+    );
     );
     );
   }
