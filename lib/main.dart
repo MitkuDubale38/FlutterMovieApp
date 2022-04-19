@@ -7,7 +7,6 @@ import 'cubit/countercubit.dart';
 import 'models/newsinfo.dart';
 import 'services/api_manager.dart';
 import 'movie_detail.dart';
-import 'dart:async';
 
 void main() => runApp(MyApp());
 
@@ -17,11 +16,6 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  void initState() {
-    super.initState();
-    Timer(Duration(seconds: 3), () => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomePage())));
-  }
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -31,7 +25,7 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: Container(color: Colors.white, child: FlutterLogo(size: MediaQuery.of(context).size.height)),
+      home: HomePage(),
     );
   }
 }
