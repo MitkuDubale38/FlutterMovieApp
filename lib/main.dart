@@ -58,54 +58,62 @@ class _MyAppState extends State<MyApp> {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                ListView.builder(
-                    shrinkWrap: true,
-                    itemCount: posts?.results.length,
-                    itemBuilder: (BuildContext context, int position) {
-                      if (posts!.results[position].posterPath != null) {
-                        image = NetworkImage(iconBase + posts!.results[position].posterPath);
-                      } else {
-                        image = NetworkImage(defaultImage);
-                      }
-                      final postions = posts!.results;
-                      return Dismissible(
-                        key: UniqueKey(),
-                        onDismissed: (direction) {
-                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(backgroundColor: Colors.blue, content: Text('${posts!.results[position].title} Dismissed')));
-                          setState(() {
-                            postions.removeAt(position);
-                          });
-                        },
-                        child: Card(
-                          color: Colors.white,
-                          elevation: 2.0,
-                          child: ListTile(
-                            onTap: () {
-                              MaterialPageRoute route = MaterialPageRoute(
-                                  builder: (_) => MovieDetail(
-                                        movie: posts as PostsModel,
-                                        index: position,
-                                      ));
-                              Navigator.push(context, route);
-                            },
-                            leading: CircleAvatar(
-                              backgroundImage: image,
-                            ),
-                            title: Text(posts!.results[position].title),
-                            subtitle: Text('Released: ' + posts!.results[position].title + ' - Vote: ' + posts!.results[position].voteAverage.toString()),
-                          ),
-                        ),
-                        background: Container(
-                          color: Colors.red[400],
-                          margin: const EdgeInsets.symmetric(horizontal: 5),
-                          alignment: Alignment.centerRight,
-                          child: const Icon(
-                            Icons.delete,
+                RefreshIndicator(
+                  color: Colors.blue,
+                  triggerMode: RefreshIndicatorTriggerMode.anywhere,
+                  onRefresh: () async {
+                    await Future.delayed(Duration(seconds: 2));
+                    getData();
+                  },
+                  child: ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: posts?.results.length,
+                      itemBuilder: (BuildContext context, int position) {
+                        if (posts!.results[position].posterPath != null) {
+                          image = NetworkImage(iconBase + posts!.results[position].posterPath);
+                        } else {
+                          image = NetworkImage(defaultImage);
+                        }
+                        final postions = posts!.results;
+                        return Dismissible(
+                          key: UniqueKey(),
+                          onDismissed: (direction) {
+                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(backgroundColor: Colors.blue, content: Text('${posts!.results[position].title} Dismissed')));
+                            setState(() {
+                              postions.removeAt(position);
+                            });
+                          },
+                          child: Card(
                             color: Colors.white,
+                            elevation: 2.0,
+                            child: ListTile(
+                              onTap: () {
+                                MaterialPageRoute route = MaterialPageRoute(
+                                    builder: (_) => MovieDetail(
+                                          movie: posts as PostsModel,
+                                          index: position,
+                                        ));
+                                Navigator.push(context, route);
+                              },
+                              leading: CircleAvatar(
+                                backgroundImage: image,
+                              ),
+                              title: Text(posts!.results[position].title),
+                              subtitle: Text('Released: ' + posts!.results[position].title + ' - Vote: ' + posts!.results[position].voteAverage.toString()),
+                            ),
                           ),
-                        ),
-                      );
-                    }),
+                          background: Container(
+                            color: Colors.red[400],
+                            margin: const EdgeInsets.symmetric(horizontal: 5),
+                            alignment: Alignment.centerRight,
+                            child: const Icon(
+                              Icons.delete,
+                              color: Colors.white,
+                            ),
+                          ),
+                        );
+                      }),
+                ),
                 Padding(
                   padding: EdgeInsets.symmetric(vertical: 20),
                   child: ElevatedButton(
