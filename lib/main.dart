@@ -41,7 +41,7 @@ class _MyAppState extends State<MyApp> {
       child:FlutterLogo(size:MediaQuery.of(context).size.height)
     ),
     )
-    );
+    )
   }
 }
 
