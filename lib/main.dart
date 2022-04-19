@@ -31,9 +31,12 @@ class _MyAppState extends State<MyApp> {
         navigateAfterSeconds: HomePage(),
         title: new Text(
           'Upcoming Movies',
-          style: new TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0, color: Colors.white),
+          style: new TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0, color: Colors.black54),
         ),
-        backgroundColor: Colors.lightBlue[200],
+        image: new Image.network("https://images.freeimages.com/images/large-previews/5eb/movie-clapboard-1184339.jpg"),
+        photoSize: 100.0,
+        backgroundColor: Colors.white,
+        loaderColor: Colors.black54,
       ),
     );
   }
