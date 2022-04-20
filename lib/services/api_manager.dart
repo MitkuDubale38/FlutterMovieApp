@@ -10,7 +10,4 @@ class ApiManager {
     //print(result.body);
     return PostsModel.fromJson(jsonDecoded);
   }
-
-
-  }
 }
