@@ -43,7 +43,6 @@ class _HomePageState extends State<HomePage> {
   int page = 1;
   final String iconBase = 'https://image.tmdb.org/t/p/w92/';
   final String defaultImage = 'https://images.freeimages.com/images/large-previews/5eb/movie-clapboard-1184339.jpg';
-  List<String> searchList = List<String>();
 
   @override
   void initState() {
