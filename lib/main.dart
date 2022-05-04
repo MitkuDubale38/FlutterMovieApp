@@ -116,9 +116,10 @@ class _HomePageState extends State<HomePage> {
                               backgroundImage: image,
                             ),
                           ),
-                          trailing: Icon(
-                            Icons.favorite_border,
+                          trailing: IconButton(
+                            icon: const Icon(Icons.favorite_border),
                             color: Colors.blue,
+                            onPressed: () {},
                           ),
                           title: Text(posts!.results[position].title),
                           subtitle: Text('Released: ' + posts!.results[position].title + ' - ' + posts!.results[position].voteAverage.toString() + ' ⭐'),
