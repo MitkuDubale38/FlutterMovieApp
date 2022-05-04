@@ -110,8 +110,11 @@ class _HomePageState extends State<HomePage> {
                                       ));
                               Navigator.push(context, route);
                             },
-                            leading: CircleAvatar(
-                              backgroundImage: image,
+                            leading: Hero(
+                              tag: posts!.results[position].title,
+                              child: CircleAvatar(
+                                backgroundImage: image,
+                              ),
                             ),
                             title: Text(posts!.results[position].title),
                             subtitle: Text('Released: ' + posts!.results[position].title + ' - ' + posts!.results[position].voteAverage.toString() + ' ⭐'),

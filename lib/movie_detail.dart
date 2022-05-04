@@ -27,10 +27,13 @@ class MovieDetail extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
-            Center(
-              child: Column(children: [
-                Container(padding: EdgeInsets.all(16), height: height / 1.5, child: Image.network(path)),
-              ]),
+            Hero(
+              tag: movie.results[index].title,
+              child: Center(
+                child: Column(children: [
+                  Container(padding: EdgeInsets.all(16), height: height / 1.5, child: Image.network(path)),
+                ]),
+              ),
             ),
             Padding(
               padding: EdgeInsets.only(left: 16, right: 16, bottom: 15),
