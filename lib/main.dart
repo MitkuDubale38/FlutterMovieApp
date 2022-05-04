@@ -130,6 +130,7 @@ class _HomePageState extends State<HomePage> {
                             onPressed: () {
                               addToFav(posts!.results[position].id);
                               favoriteMovieList.add(posts!.results[position]);
+                              print(favoriteMovieList);
                             },
                           ),
                           title: Text(posts!.results[position].title),
