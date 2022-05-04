@@ -40,6 +40,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   PostsModel? posts;
   bool isLoaded = false;
+  bool addToFavorite = false;
   int page = 1;
   final String iconBase = 'https://image.tmdb.org/t/p/w92/';
   final String defaultImage = 'https://images.freeimages.com/images/large-previews/5eb/movie-clapboard-1184339.jpg';
@@ -59,6 +60,12 @@ class _HomePageState extends State<HomePage> {
       });
     }
     print(posts?.page = 2);
+  }
+
+  void addToFav() {
+    setState(() {
+      addToFavorite = !addToFavorite;
+    });
   }
 
   @override
@@ -117,7 +124,7 @@ class _HomePageState extends State<HomePage> {
                             ),
                           ),
                           trailing: IconButton(
-                            icon: const Icon(Icons.favorite_border),
+                            icon: addToFavorite ? Icon(Icons.favorite_border) : Icon(Icons.favorite, color: Colors.blue),
                             color: Colors.blue,
                             onPressed: () {},
                           ),
