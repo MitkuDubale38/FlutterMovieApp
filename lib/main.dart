@@ -48,9 +48,7 @@ class _IndexPageState extends State<IndexPage> {
 
   static const List<Widget> _widgetOptions = <Widget>[
     HomePage(),
-    Text(
-      'Index 1: Business',
-    )
+    FavoritePage(),
   ];
 
   @override
@@ -231,5 +229,19 @@ class _HomePageState extends State<HomePage> {
         replacement: const Center(child: CircularProgressIndicator()),
       ),
     );
+  }
+}
+
+class FavoritePage extends StatefulWidget {
+  const FavoritePage({Key? key}) : super(key: key);
+
+  @override
+  State<FavoritePage> createState() => _FavoritePageState();
+}
+
+class _FavoritePageState extends State<FavoritePage> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(body: Text("Boom"));
   }
 }
