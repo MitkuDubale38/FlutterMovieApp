@@ -128,7 +128,7 @@ class _HomePageState extends State<HomePage> {
                             icon: favoriteMovieList.isEmpty ? Icon(Icons.favorite_border) : Icon(Icons.favorite, color: Colors.blue),
                             color: Colors.blue,
                             onPressed: () {
-                              addToFav(posts!.results[position].id);
+                              //addToFav(posts!.results[position].id);
                               setState(() {
                                 favoriteMovieList.add(posts!.results[position]);
                                 print(favoriteMovieList);
