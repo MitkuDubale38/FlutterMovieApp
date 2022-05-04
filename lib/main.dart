@@ -55,7 +55,6 @@ class _IndexPageState extends State<IndexPage> {
 
   @override
   Widget build(BuildContext context) {
-    NetworkImage image;
     return Scaffold(
       appBar: AppBar(
         title: Text("Upcoming Movies"),
@@ -75,6 +74,7 @@ class _IndexPageState extends State<IndexPage> {
         currentIndex: _selectedIndex,
         selectedItemColor: Colors.blue,
         onTap: _onItemTapped,
+        showUnselectedLabels: false,
       ),
     );
   }
