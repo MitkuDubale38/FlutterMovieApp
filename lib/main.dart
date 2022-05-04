@@ -40,11 +40,11 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   PostsModel? posts;
   bool isLoaded = false;
-  bool addToFavorite = false;
   int page = 1;
   final String iconBase = 'https://image.tmdb.org/t/p/w92/';
   final String defaultImage = 'https://images.freeimages.com/images/large-previews/5eb/movie-clapboard-1184339.jpg';
   Set favoriteMovieList = Set();
+  int _selectedIndex = 0;
 
   @override
   void initState() {
@@ -63,9 +63,9 @@ class _HomePageState extends State<HomePage> {
     print(posts?.page = 2);
   }
 
-  void addToFav(int postId) {
+  void _onItemTapped(int index) {
     setState(() {
-      addToFavorite = !addToFavorite;
+      _selectedIndex = index;
     });
   }
 
@@ -92,8 +92,10 @@ class _HomePageState extends State<HomePage> {
                   shrinkWrap: true,
                   itemCount: posts?.results.length,
                   itemBuilder: (BuildContext context, int position) {
+                    //adding movie to favorite
                     bool isFavorite = favoriteMovieList.contains(posts!.results[position]);
 
+                    // seting image or default image
                     if (posts!.results[position].posterPath != null) {
                       image = NetworkImage(iconBase + posts!.results[position].posterPath);
                     } else {
@@ -130,8 +132,8 @@ class _HomePageState extends State<HomePage> {
                             icon: isFavorite ? Icon(Icons.favorite) : Icon(Icons.favorite_border, color: Colors.blue),
                             color: Colors.blue,
                             onPressed: () {
-                              addToFav(posts!.results[position].id);
                               setState(() {
+                                //add to favorite or remove to favorite
                                 if (isFavorite) {
                                   favoriteMovieList.remove(posts!.results[position]);
                                 } else {
@@ -185,6 +187,21 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
         replacement: const Center(child: CircularProgressIndicator()),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.favorite_border),
+            label: 'Favorites',
+          ),
+        ],
+        currentIndex: _selectedIndex,
+        selectedItemColor: Colors.amber[800],
+        onTap: _onItemTapped,
       ),
     );
   }
