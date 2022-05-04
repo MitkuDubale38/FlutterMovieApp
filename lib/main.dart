@@ -140,7 +140,7 @@ class _HomePageState extends State<HomePage> {
                       //}
                     });
                   },
-                  child: Text(page == posts!.total_pages ? 'More Movies' : 'End of upcoming movies'),
+                  child: Text(page == posts?.total_pages ? 'More Movies' : 'End of upcoming movies'),
                   style: ElevatedButton.styleFrom(
                     elevation: 5,
                     padding: EdgeInsets.symmetric(horizontal: 100, vertical: 20),
