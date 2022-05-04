@@ -120,6 +120,7 @@ class _HomePageState extends State<HomePage> {
       body: Visibility(
         visible: isLoaded,
         child: SingleChildScrollView(
+          padding: EdgeInsets.symmetric(vertical: 5),
           child: Column(
             children: [
               RefreshIndicator(
