@@ -64,7 +64,7 @@ class _HomePageState extends State<HomePage> {
 
   void addToFav(int postId) {
     setState(() {
-      postId = !addToFavorite;
+      addToFavorite = !addToFavorite;
     });
   }
 
@@ -127,7 +127,7 @@ class _HomePageState extends State<HomePage> {
                             icon: addToFavorite ? Icon(Icons.favorite) : Icon(Icons.favorite_border, color: Colors.blue),
                             color: Colors.blue,
                             onPressed: () {
-                              addToFav(posts!.results[position].id);
+                              addToFav(posts!.results[position]);
                             },
                           ),
                           title: Text(posts!.results[position].title),
