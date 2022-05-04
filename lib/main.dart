@@ -49,12 +49,10 @@ class _HomePageState extends State<HomePage> {
   static const List<Widget> _widgetOptions = <Widget>[
     Text(
       'Index 0: Home',
-      style: optionStyle,
     ),
     Text(
       'Index 1: Business',
-      style: optionStyle,
-   
+    )
   ];
 
   @override
@@ -212,9 +210,7 @@ class _HomePageState extends State<HomePage> {
         ],
         currentIndex: _selectedIndex,
         selectedItemColor: Colors.blue,
-
         onTap: _onItemTapped,
-        
       ),
     );
   }
