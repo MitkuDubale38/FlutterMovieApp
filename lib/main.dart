@@ -81,6 +81,7 @@ class _HomePageState extends State<HomePage> {
                   getData();
                 },
                 child: ListView.builder(
+                    trailing: Icon(Icons.favorite_border),
                     shrinkWrap: true,
                     itemCount: posts?.results.length,
                     itemBuilder: (BuildContext context, int position) {
