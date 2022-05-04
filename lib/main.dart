@@ -134,7 +134,7 @@ class _HomePageState extends State<HomePage> {
                 child: ElevatedButton(
                   onPressed: () {
                     setState(() {
-                      if (page != posts?.totalPages) {
+                      if (page == posts?.totalPages) {
                         page = page + 1;
                         getData();
                       } else {
