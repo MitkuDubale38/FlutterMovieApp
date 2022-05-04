@@ -126,7 +126,9 @@ class _HomePageState extends State<HomePage> {
                           trailing: IconButton(
                             icon: addToFavorite ? Icon(Icons.favorite_border) : Icon(Icons.favorite, color: Colors.blue),
                             color: Colors.blue,
-                            onPressed: () {},
+                            onPressed: () {
+                              addToFav();
+                            },
                           ),
                           title: Text(posts!.results[position].title),
                           subtitle: Text('Released: ' + posts!.results[position].title + ' - ' + posts!.results[position].voteAverage.toString() + ' ⭐'),
