@@ -125,7 +125,7 @@ class _HomePageState extends State<HomePage> {
                             ),
                           ),
                           trailing: IconButton(
-                            icon: favoriteMovieList.isEmpty ? Icon(Icons.favorite) : Icon(Icons.favorite_border, color: Colors.blue),
+                            icon: favoriteMovieList.isEmpty ? Icon(Icons.favorite_border) : Icon(Icons.favorite, color: Colors.blue),
                             color: Colors.blue,
                             onPressed: () {
                               addToFav(posts!.results[position].id);
