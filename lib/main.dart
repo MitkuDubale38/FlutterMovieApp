@@ -75,7 +75,7 @@ class _IndexPageState extends State<IndexPage> {
         iconSize: 25,
         selectedLabelStyle: TextStyle(fontWeight: FontWeight.bold),
         elevation: 30,
-        selectedFontSize: 25,
+        selectedFontSize: 18,
       ),
     );
   }
