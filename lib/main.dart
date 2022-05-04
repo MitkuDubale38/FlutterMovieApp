@@ -125,12 +125,14 @@ class _HomePageState extends State<HomePage> {
                             ),
                           ),
                           trailing: IconButton(
-                            icon: addToFavorite ? Icon(Icons.favorite) : Icon(Icons.favorite_border, color: Colors.blue),
+                            icon: favoriteMovieList.isEmpty ? Icon(Icons.favorite) : Icon(Icons.favorite_border, color: Colors.blue),
                             color: Colors.blue,
                             onPressed: () {
                               addToFav(posts!.results[position].id);
-                              favoriteMovieList.add(posts!.results[position]);
-                              print(favoriteMovieList);
+                              setState(() {
+                                favoriteMovieList.add(posts!.results[position]);
+                                print(favoriteMovieList);
+                              });
                             },
                           ),
                           title: Text(posts!.results[position].title),
