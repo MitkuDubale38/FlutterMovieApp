@@ -122,7 +122,7 @@ class _HomePageState extends State<HomePage> {
                           margin: const EdgeInsets.symmetric(horizontal: 5),
                           alignment: Alignment.centerRight,
                           child: const Icon(
-                            Icons.favorite_border,
+                            Icons.delete,
                             color: Colors.white,
                           ),
                         ),
