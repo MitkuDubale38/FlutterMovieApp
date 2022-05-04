@@ -46,6 +46,17 @@ class _HomePageState extends State<HomePage> {
   Set favoriteMovieList = Set();
   int _selectedIndex = 0;
 
+  static const List<Widget> _widgetOptions = <Widget>[
+    Text(
+      'Index 0: Home',
+      style: optionStyle,
+    ),
+    Text(
+      'Index 1: Business',
+      style: optionStyle,
+   
+  ];
+
   @override
   void initState() {
     super.initState();
@@ -200,8 +211,10 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.amber[800],
+        selectedItemColor: Colors.blue,
+
         onTap: _onItemTapped,
+        
       ),
     );
   }
