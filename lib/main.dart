@@ -44,7 +44,7 @@ class _HomePageState extends State<HomePage> {
   int page = 1;
   final String iconBase = 'https://image.tmdb.org/t/p/w92/';
   final String defaultImage = 'https://images.freeimages.com/images/large-previews/5eb/movie-clapboard-1184339.jpg';
-  List favoriteMovieList = [];
+  Set favoriteMovieList = Set();
 
   @override
   void initState() {
@@ -92,6 +92,8 @@ class _HomePageState extends State<HomePage> {
                   shrinkWrap: true,
                   itemCount: posts?.results.length,
                   itemBuilder: (BuildContext context, int position) {
+                    bool isFavorite = favoriteMovieList.contains(posts!.results[position]);
+
                     if (posts!.results[position].posterPath != null) {
                       image = NetworkImage(iconBase + posts!.results[position].posterPath);
                     } else {
@@ -125,13 +127,16 @@ class _HomePageState extends State<HomePage> {
                             ),
                           ),
                           trailing: IconButton(
-                            icon: favoriteMovieList.isEmpty ? Icon(Icons.favorite_border) : Icon(Icons.favorite, color: Colors.blue),
+                            icon: isFavorite ? Icon(Icons.favorite) : Icon(Icons.favorite_border, color: Colors.blue),
                             color: Colors.blue,
                             onPressed: () {
-                              //addToFav(posts!.results[position].id);
+                              addToFav(posts!.results[position].id);
                               setState(() {
-                                favoriteMovieList.add(posts!.results[position]);
-                                print(favoriteMovieList);
+                                if (isFavorite) {
+                                  favoriteMovieList.remove(posts!.results[position]);
+                                } else {
+                                  favoriteMovieList.add(posts!.results[position]);
+                                }
                               });
                             },
                           ),
