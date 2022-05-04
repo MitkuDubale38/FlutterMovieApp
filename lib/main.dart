@@ -81,6 +81,7 @@ class _HomePageState extends State<HomePage> {
                   getData();
                 },
                 child: ListView.builder(
+                    reverse: true,
                     shrinkWrap: true,
                     itemCount: posts?.results.length,
                     itemBuilder: (BuildContext context, int position) {
