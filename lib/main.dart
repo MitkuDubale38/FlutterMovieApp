@@ -124,7 +124,7 @@ class _HomePageState extends State<HomePage> {
                             ),
                           ),
                           trailing: IconButton(
-                            icon: addToFavorite ? Icon(Icons.favorite_border) : Icon(Icons.favorite, color: Colors.blue),
+                            icon: addToFavorite ? Icon(Icons.favorite) : Icon(Icons.favorite_border, color: Colors.blue),
                             color: Colors.blue,
                             onPressed: () {
                               addToFav();
