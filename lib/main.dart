@@ -25,7 +25,57 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: HomePage(),
+      home: IndexPage(),
+    );
+  }
+}
+
+class IndexPage extends StatefulWidget {
+  const IndexPage({Key? key}) : super(key: key);
+
+  @override
+  State<IndexPage> createState() => _IndexPageState();
+}
+
+class _IndexPageState extends State<IndexPage> {
+  int _selectedIndex = 0;
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
+  static const List<Widget> _widgetOptions = <Widget>[
+    HomePage(),
+    Text(
+      'Index 1: Business',
+    )
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    NetworkImage image;
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Upcoming Movies"),
+      ),
+      body: _widgetOptions.elementAt(_selectedIndex),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.favorite_border),
+            label: 'Favorites',
+          ),
+        ],
+        currentIndex: _selectedIndex,
+        selectedItemColor: Colors.blue,
+        onTap: _onItemTapped,
+      ),
     );
   }
 }
@@ -44,16 +94,6 @@ class _HomePageState extends State<HomePage> {
   final String iconBase = 'https://image.tmdb.org/t/p/w92/';
   final String defaultImage = 'https://images.freeimages.com/images/large-previews/5eb/movie-clapboard-1184339.jpg';
   Set favoriteMovieList = Set();
-  int _selectedIndex = 0;
-
-  static const List<Widget> _widgetOptions = <Widget>[
-    Text(
-      'Index 0: Home',
-    ),
-    Text(
-      'Index 1: Business',
-    )
-  ];
 
   @override
   void initState() {
@@ -70,12 +110,6 @@ class _HomePageState extends State<HomePage> {
       });
     }
     print(posts?.page = 2);
-  }
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
   }
 
   @override
@@ -196,21 +230,6 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
         replacement: const Center(child: CircularProgressIndicator()),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.favorite_border),
-            label: 'Favorites',
-          ),
-        ],
-        currentIndex: _selectedIndex,
-        selectedItemColor: Colors.blue,
-        onTap: _onItemTapped,
       ),
     );
   }
