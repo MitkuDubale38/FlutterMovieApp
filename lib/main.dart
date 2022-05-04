@@ -63,9 +63,8 @@ class _HomePageState extends State<HomePage> {
   }
 
   void addToFav(int postId) {
-    bool addToFavorit = false;
     setState(() {
-      addToFavorit = !addToFavorite;
+      addToFavorite = !addToFavorite;
     });
   }
 
