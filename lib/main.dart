@@ -116,9 +116,6 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     NetworkImage image;
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Upcoming Movies"),
-      ),
       body: Visibility(
         visible: isLoaded,
         child: SingleChildScrollView(
