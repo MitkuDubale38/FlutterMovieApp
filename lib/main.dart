@@ -118,7 +118,7 @@ class _HomePageState extends State<HomePage> {
                           ),
                           trailing: Icon(
                             Icons.favorite_border,
-                            iconColor: Colors.blue,
+                            color: Colors.blue,
                           ),
                           title: Text(posts!.results[position].title),
                           subtitle: Text('Released: ' + posts!.results[position].title + ' - ' + posts!.results[position].voteAverage.toString() + ' ⭐'),
