@@ -113,6 +113,11 @@ class _HomePageState extends State<HomePage> {
                             leading: CircleAvatar(
                               backgroundImage: image,
                             ),
+                            trailing: IconButton(
+                              onPressed: () {},
+                              icon: Icons.favorite_border,
+                              color: Colors.blue,
+                            ),
                             title: Text(posts!.results[position].title),
                             subtitle: Text('Released: ' + posts!.results[position].title + ' - ' + posts!.results[position].voteAverage.toString() + ' ⭐'),
                           ),
