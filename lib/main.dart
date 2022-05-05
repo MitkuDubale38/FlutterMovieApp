@@ -78,6 +78,7 @@ class _IndexPageState extends State<IndexPage> {
         onTap: _onItemTapped,
         selectedFontSize: 18,
         iconSize: 25,
+        unselectedFontSize: 14,
       ),
     );
   }
