@@ -7,6 +7,7 @@ import 'cubit/countercubit.dart';
 import 'models/newsinfo.dart';
 import 'services/api_manager.dart';
 import 'movie_detail.dart';
+import 'utils.dart' as globals;
 
 void main() => runApp(MyApp());
 
@@ -84,6 +85,10 @@ class _HomePageState extends State<HomePage> {
                     shrinkWrap: true,
                     itemCount: posts?.results.length,
                     itemBuilder: (BuildContext context, int position) {
+                      //checking if the movie is added to favorite
+                      bool isFavorite = globals.favoriteMovieList.contains(posts!.results[position]);
+
+                      //checking if image is available else displaying default image
                       if (posts!.results[position].posterPath != null) {
                         image = NetworkImage(iconBase + posts!.results[position].posterPath);
                       } else {
@@ -114,9 +119,19 @@ class _HomePageState extends State<HomePage> {
                               backgroundImage: image,
                             ),
                             trailing: IconButton(
-                              onPressed: () => {},
-                              icon: Icon(Icons.favorite_border),
+                              icon: isFavorite ? Icon(Icons.favorite) : Icon(Icons.favorite_border),
                               color: Colors.blue,
+                              onPressed: () => {
+                                setState(
+                                  () {
+                                    if (isFavorite) {
+                                      globals.favoriteMovieList.remove(posts!.results[position]);
+                                    } else {
+                                      globals.favoriteMovieList.add(posts!.results[position]);
+                                    }
+                                  },
+                                ),
+                              },
                             ),
                             title: Text(posts!.results[position].title),
                             subtitle: Text('Released: ' + posts!.results[position].title + ' - ' + posts!.results[position].voteAverage.toString() + ' ⭐'),
