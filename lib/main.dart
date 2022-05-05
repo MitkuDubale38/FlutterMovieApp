@@ -7,6 +7,7 @@ import 'cubit/countercubit.dart';
 import 'models/newsinfo.dart';
 import 'services/api_manager.dart';
 import 'movie_detail.dart';
+import './utils.dart';
 
 void main() => runApp(MyApp());
 
@@ -244,6 +245,6 @@ class FavoritePage extends StatefulWidget {
 class _FavoritePageState extends State<FavoritePage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: Text("Boom"));
+    return Scaffold(body: Text();
   }
 }
