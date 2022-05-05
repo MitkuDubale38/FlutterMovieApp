@@ -76,9 +76,9 @@ class _IndexPageState extends State<IndexPage> {
         selectedItemColor: Colors.blue,
         selectedLabelStyle: TextStyle(fontWeight: FontWeight.bold),
         onTap: _onItemTapped,
-        selectedFontSize: 18,
+        selectedFontSize: 16,
         iconSize: 25,
-        unselectedFontSize: 14,
+        unselectedFontSize: 13,
       ),
     );
   }
