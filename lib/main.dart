@@ -134,13 +134,15 @@ class _HomePageState extends State<HomePage> {
                 child: ElevatedButton(
                   onPressed: () {
                     setState(() {
-                      // if (page != posts?.total_pages) {
-                      page = page + 1;
-                      getData();
-                      //}
+                      if (page != posts?.totalPages) {
+                        page = page + 1;
+                        getData();
+                      } else {
+                        page = 1;
+                      }
                     });
                   },
-                  child: Text(page == 1 ? 'More Movies' : 'End of upcoming movies'),
+                  child: Text(page == posts?.totalPages ? 'More Movies' : 'End of upcoming movies'),
                   style: ElevatedButton.styleFrom(
                     elevation: 5,
                     padding: EdgeInsets.symmetric(horizontal: 100, vertical: 20),
