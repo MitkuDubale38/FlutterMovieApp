@@ -26,7 +26,58 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: HomePage(),
+      home: IndexPage(),
+    );
+  }
+}
+
+class IndexPage extends StatefulWidget {
+  const IndexPage({Key? key}) : super(key: key);
+
+  @override
+  State<IndexPage> createState() => _IndexPageState();
+}
+
+class _IndexPageState extends State<IndexPage> {
+  int _selectedIndex = 0;
+
+  static const List<Widget> _widgetOptions = <Widget>[
+    HomePage(),
+    Text(
+      'Index 1: Business',
+    )
+  ];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Upcoming Movies"),
+      ),
+      body: _widgetOptions.elementAt(_selectedIndex),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.favorite_border),
+            label: 'Favorite',
+          ),
+        ],
+        currentIndex: _selectedIndex,
+        selectedItemColor: Colors.blue,
+        selectedLabelStyle: TextStyle(fontWeight: FontWeight.bold),
+        onTap: _onItemTapped,
+        selectedFontSize: 25,
+      ),
     );
   }
 }
@@ -66,9 +117,6 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     NetworkImage image;
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Upcoming Movies"),
-      ),
       body: Visibility(
         visible: isLoaded,
         child: SingleChildScrollView(
