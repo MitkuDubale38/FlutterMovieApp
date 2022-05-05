@@ -166,8 +166,11 @@ class _HomePageState extends State<HomePage> {
                                       ));
                               Navigator.push(context, route);
                             },
-                            leading: CircleAvatar(
-                              backgroundImage: image,
+                            leading: Hero(
+                              tag: posts!.results[position].title,
+                              child: CircleAvatar(
+                                backgroundImage: image,
+                              ),
                             ),
                             trailing: IconButton(
                               icon: isFavorite ? Icon(Icons.favorite) : Icon(Icons.favorite_border),
