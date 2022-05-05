@@ -114,8 +114,8 @@ class _HomePageState extends State<HomePage> {
                               backgroundImage: image,
                             ),
                             trailing: IconButton(
-                              onPressed: () {},
-                              icon: Icons.favorite_border,
+                              onPressed: () => {},
+                              icon: Icon(Icons.favorite_border),
                               color: Colors.blue,
                             ),
                             title: Text(posts!.results[position].title),
