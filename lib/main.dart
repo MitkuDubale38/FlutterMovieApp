@@ -79,6 +79,7 @@ class _IndexPageState extends State<IndexPage> {
         selectedFontSize: 16,
         iconSize: 25,
         unselectedFontSize: 13,
+        elevation: 15,
       ),
     );
   }
