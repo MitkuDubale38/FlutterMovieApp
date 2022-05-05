@@ -77,7 +77,7 @@ class _IndexPageState extends State<IndexPage> {
         selectedLabelStyle: TextStyle(fontWeight: FontWeight.bold),
         onTap: _onItemTapped,
         selectedFontSize: 18,
-        iconSize: 30,
+        iconSize: 25,
       ),
     );
   }
