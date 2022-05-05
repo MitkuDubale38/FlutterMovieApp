@@ -1,7 +1,3 @@
-class utils {
-  Set favoriteMovieList = Set();
+library globals;
 
-  utils({
-    required this.favoriteMovieList,
-  });
-}
+Set favoriteMovieList = Set();

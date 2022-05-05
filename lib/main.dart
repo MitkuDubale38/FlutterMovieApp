@@ -7,7 +7,6 @@ import 'cubit/countercubit.dart';
 import 'models/newsinfo.dart';
 import 'services/api_manager.dart';
 import 'movie_detail.dart';
-import './utils.dart';
 
 void main() => runApp(MyApp());
 
@@ -26,58 +25,7 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: IndexPage(),
-    );
-  }
-}
-
-class IndexPage extends StatefulWidget {
-  const IndexPage({Key? key}) : super(key: key);
-
-  @override
-  State<IndexPage> createState() => _IndexPageState();
-}
-
-class _IndexPageState extends State<IndexPage> {
-  int _selectedIndex = 0;
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
-
-  static const List<Widget> _widgetOptions = <Widget>[
-    HomePage(),
-    FavoritePage(),
-  ];
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Upcoming Movies"),
-      ),
-      body: _widgetOptions.elementAt(_selectedIndex),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.favorite_border),
-            label: 'Favorites',
-          ),
-        ],
-        currentIndex: _selectedIndex,
-        selectedItemColor: Colors.blue,
-        onTap: _onItemTapped,
-        iconSize: 25,
-        selectedLabelStyle: TextStyle(fontWeight: FontWeight.bold),
-        elevation: 30,
-        selectedFontSize: 15,
-      ),
+      home: HomePage(),
     );
   }
 }
@@ -95,7 +43,6 @@ class _HomePageState extends State<HomePage> {
   int page = 1;
   final String iconBase = 'https://image.tmdb.org/t/p/w92/';
   final String defaultImage = 'https://images.freeimages.com/images/large-previews/5eb/movie-clapboard-1184339.jpg';
-  Set favoriteMovieList = Set();
 
   @override
   void initState() {
@@ -118,10 +65,12 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     NetworkImage image;
     return Scaffold(
+      appBar: AppBar(
+        title: Text("Upcoming Movies"),
+      ),
       body: Visibility(
         visible: isLoaded,
         child: SingleChildScrollView(
-          padding: EdgeInsets.symmetric(vertical: 5),
           child: Column(
             children: [
               RefreshIndicator(
@@ -132,90 +81,66 @@ class _HomePageState extends State<HomePage> {
                   getData();
                 },
                 child: ListView.builder(
-                  shrinkWrap: true,
-                  itemCount: posts?.results.length,
-                  itemBuilder: (BuildContext context, int position) {
-                    //adding movie to favorite
-                    bool isFavorite = favoriteMovieList.contains(posts!.results[position]);
-
-                    // seting image or default image
-                    if (posts!.results[position].posterPath != null) {
-                      image = NetworkImage(iconBase + posts!.results[position].posterPath);
-                    } else {
-                      image = NetworkImage(defaultImage);
-                    }
-                    final postions = posts!.results;
-                    return Dismissible(
-                      key: UniqueKey(),
-                      onDismissed: (direction) {
-                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(backgroundColor: Colors.blue, content: Text('${posts!.results[position].title} Dismissed')));
-                        setState(() {
-                          postions.removeAt(position);
-                        });
-                      },
-                      child: Card(
-                        color: Colors.white,
-                        elevation: 2.0,
-                        child: ListTile(
-                          onTap: () {
-                            MaterialPageRoute route = MaterialPageRoute(
-                                builder: (_) => MovieDetail(
-                                      movie: posts as PostsModel,
-                                      index: position,
-                                    ));
-                            Navigator.push(context, route);
-                          },
-                          leading: Hero(
-                            tag: posts!.results[position].title,
-                            child: CircleAvatar(
+                    shrinkWrap: true,
+                    itemCount: posts?.results.length,
+                    itemBuilder: (BuildContext context, int position) {
+                      if (posts!.results[position].posterPath != null) {
+                        image = NetworkImage(iconBase + posts!.results[position].posterPath);
+                      } else {
+                        image = NetworkImage(defaultImage);
+                      }
+                      final postions = posts!.results;
+                      return Dismissible(
+                        key: UniqueKey(),
+                        onDismissed: (direction) {
+                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(backgroundColor: Colors.blue, content: Text('${posts!.results[position].title} Dismissed')));
+                          setState(() {
+                            postions.removeAt(position);
+                          });
+                        },
+                        child: Card(
+                          color: Colors.white,
+                          elevation: 2.0,
+                          child: ListTile(
+                            onTap: () {
+                              MaterialPageRoute route = MaterialPageRoute(
+                                  builder: (_) => MovieDetail(
+                                        movie: posts as PostsModel,
+                                        index: position,
+                                      ));
+                              Navigator.push(context, route);
+                            },
+                            leading: CircleAvatar(
                               backgroundImage: image,
                             ),
+                            title: Text(posts!.results[position].title),
+                            subtitle: Text('Released: ' + posts!.results[position].title + ' - ' + posts!.results[position].voteAverage.toString() + ' ⭐'),
                           ),
-                          trailing: IconButton(
-                            icon: isFavorite ? Icon(Icons.favorite) : Icon(Icons.favorite_border, color: Colors.blue),
-                            color: Colors.blue,
-                            onPressed: () {
-                              setState(() {
-                                //add to favorite or remove to favorite
-                                if (isFavorite) {
-                                  favoriteMovieList.remove(posts!.results[position]);
-                                } else {
-                                  favoriteMovieList.add(posts!.results[position]);
-                                }
-                              });
-                            },
+                        ),
+                        background: Container(
+                          color: Colors.red[400],
+                          margin: const EdgeInsets.symmetric(horizontal: 5),
+                          alignment: Alignment.centerRight,
+                          child: const Icon(
+                            Icons.delete,
+                            color: Colors.white,
                           ),
-                          title: Text(posts!.results[position].title),
-                          subtitle: Text('Released: ' + posts!.results[position].title + ' - ' + posts!.results[position].voteAverage.toString() + ' ⭐'),
                         ),
-                      ),
-                      background: Container(
-                        color: Colors.red[400],
-                        margin: const EdgeInsets.symmetric(horizontal: 5),
-                        alignment: Alignment.centerRight,
-                        child: const Icon(
-                          Icons.delete,
-                          color: Colors.white,
-                        ),
-                      ),
-                    );
-                  },
-                ),
+                      );
+                    }),
               ),
               Padding(
                 padding: EdgeInsets.symmetric(vertical: 20),
                 child: ElevatedButton(
                   onPressed: () {
                     setState(() {
-                      if (page != posts?.totalPages) {
-                        page = page + 1;
-                        getData();
-                      } else {
-                        page = 1;
-                      }
+                      // if (page != posts?.total_pages) {
+                      page = page + 1;
+                      getData();
+                      //}
                     });
                   },
-                  child: Text(page == posts?.totalPages ? 'End of upcoming movies' : 'More Movies'),
+                  child: Text(page == 1 ? 'More Movies' : 'End of upcoming movies'),
                   style: ElevatedButton.styleFrom(
                     elevation: 5,
                     padding: EdgeInsets.symmetric(horizontal: 100, vertical: 20),
@@ -232,19 +157,5 @@ class _HomePageState extends State<HomePage> {
         replacement: const Center(child: CircularProgressIndicator()),
       ),
     );
-  }
-}
-
-class FavoritePage extends StatefulWidget {
-  const FavoritePage({Key? key}) : super(key: key);
-
-  @override
-  State<FavoritePage> createState() => _FavoritePageState();
-}
-
-class _FavoritePageState extends State<FavoritePage> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(body: Text();
   }
 }
